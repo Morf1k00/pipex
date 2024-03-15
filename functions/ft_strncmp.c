@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:46:16 by rkrechun          #+#    #+#             */
-/*   Updated: 2023/11/17 16:44:32 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:25:12 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {

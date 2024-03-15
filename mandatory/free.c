@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:57:11 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 15:01:43 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:25:19 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../include/pipex.h"
 
 void parent_free(t_pipex *pipex)
 {

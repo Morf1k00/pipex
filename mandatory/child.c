@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:31:10 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 15:14:14 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:30:56 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../include/pipex.h"
 
 static char *get_cmd(char **path, char *cmd)
 {
@@ -30,7 +30,7 @@ static char *get_cmd(char **path, char *cmd)
 	return(NULL);
 }
 
-void fist_child(t_pipex pipex, char **argv, char **evn)
+void first_child(t_pipex pipex, char **argv, char **evn)
 {
 	dup2(pipex.tube[1], 1);
 	close(pipex.tube[0]);
@@ -46,7 +46,7 @@ void fist_child(t_pipex pipex, char **argv, char **evn)
 	execve(pipex.cmd, pipex.cmd_args, evn);
 }
 
-void secod_child(t_pipex pipex, char **argv, char **evn)
+void second_child(t_pipex pipex, char **argv, char **evn)
 {
 	dup2(pipex.tube[0], 0);
 	close(pipex.tube[1]);

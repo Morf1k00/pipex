@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:05:27 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 15:42:26 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:16:48 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
-# include <libft/libft.h>
+# include <stdlib.h>
+# include <stdio.h>
+// # include <libft/libft.h>
 
 # define ERR_INFILE "INFILE"
 # define ERR_OUTFILE "OUTFILE"
 # define ERR_PIPE "PIPE"
-# define ERR_INPUT "INVALID NUMBER OF ARGUMENTS"
-# define ERR_CMD "COMAND NOT FOUND"
+# define ERR_INPUT "INVALID NUMBER OF ARGUMENTS.\n"
+# define ERR_CMD "COMAND NOT FOUND\n"
 
 
 typedef struct s_pipex
@@ -41,11 +43,11 @@ typedef struct s_pipex
 
 
 // childs.c
-void 			fist_child(t_pipex pipex, char **argv, char **evn);
-void 			secod_child(t_pipex pipex, char **argv, char **evn);
+void 			first_child(t_pipex pipex, char **argv, char **evn);
+void 			second_child(t_pipex pipex, char **argv, char **evn);
 
 // error.c
-int				msg(char **err);
+int				msg(char *err);
 int				msg_error(char *err);
 
 // free.c

@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:46:14 by rkrechun          #+#    #+#             */
-/*   Updated: 2023/11/16 16:23:49 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:25:09 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 size_t	ft_strlen(const char *s)
 {

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:53:46 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 14:56:40 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:31:48 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../include/pipex.h"
 
 char *find_path(char **evn)
 {
 	while(ft_strncmp("PATH=", *evn, 5))
 		evn++;
-	return(evn + 5);
+	return(*evn + 5);
 }
 
 void close_pipes(t_pipex *pipex)
@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **env)
 	if (pipe(pipex.tube) < 0)
 		msg_error(ERR_PIPE);
 	pipex.paths = find_path(env);
-	pipex.cmd_path = ft_split(pipex.paths, ":");
+	pipex.cmd_path = ft_split(pipex.paths, ':');
 	pipex.pid1 = fork();
 	if(pipex.pid1 == 0)
 		first_child(pipex, argv, env);

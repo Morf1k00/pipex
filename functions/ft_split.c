@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:16:22 by rkrechun          #+#    #+#             */
-/*   Updated: 2023/11/21 10:26:11 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:24:59 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 static char	*ft_dele(const char *s, char c)
 {

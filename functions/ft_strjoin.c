@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:09:35 by rkrechun          #+#    #+#             */
-/*   Updated: 2023/11/16 17:15:59 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:25:06 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

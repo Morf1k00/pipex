@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 15:05:18 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/15 16:06:08 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/15 16:29:26 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
 OBJ_F		= $(FUNC: .c = .o)
 
 %.o: %.c $(HEADER) Makefile
-								@${CC} ${FLAGS} -c $< -o $@
+			@$(CC) $(FLAGS) -c $< -o $@
 								
 $(NAME):	$(OBJ_F) $(OBJ_M)
 				@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
