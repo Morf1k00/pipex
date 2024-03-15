@@ -6,14 +6,14 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 15:05:18 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/15 16:29:26 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/15 17:08:26 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= pipex
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
-RM		= rm -rf
+RM		= rm
 
 HEADER_SRCS	= pipex.h
 HEADER_DIR	= include/
@@ -22,34 +22,38 @@ HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 MPATH_SRCS	= child.c error.c free.c pipex.c
 MPATH_DIR	= mandatory/
 MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
-OBJ_M		= $(MPATH: .c = .o)
+OBJ_M		= $(MPATH:.c=.o)
 
 FUNC_SRCS	= ft_split.c ft_strjoin.c ft_strlen.c ft_strncmp.c
 FUNC_DIR	= functions/
 FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
-OBJ_F		= $(FUNC: .c = .o)
+OBJ_F		= $(FUNC:.c=.o)
 
-%.o: %.c $(HEADER) Makefile
-			@$(CC) $(FLAGS) -c $< -o $@
+
+
+
+
+%.o: %.c $(OBJ_M) $(OBJ_F) $(HEADER)
+	@$(CC) $(FLAGS) -c $< -o $@
 								
-$(NAME):	$(OBJ_F) $(OBJ_M)
-				@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
-				@echo -e "$(GREEN)$(NAME) Created!$(DEFAULT)"
+$(NAME): $(OBJ_F) $(OBJ_M)
+	@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
+	@echo "$(GREEN)$(NAME) Created!$(DEFAULT)"
 
 all:	$(NAME)
 
 clean:	
 		@$(RM) $(OBJ_M)
 		@$(RM) $(OBJ_F)
-		@echo -e "$(YELLOW) objectfile deleted!$(DEFAULT)"
+		@echo "$(YELLOW) objectfile deleted!$(DEFAULT)"
 
 fclean: clean
-			@$(RM) $(NAME)
-			@echo -e "$(RED) all deleted!$(DEFAULT)"
+		@$(RM) $(NAME)
+		@echo "$(RED) all deleted!$(DEFAULT)"
 
 re:	fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:	all clean fclean re
 
 #COLORS
 RED = \033[1;31m
