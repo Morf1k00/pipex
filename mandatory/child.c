@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:31:10 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 16:30:56 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:32:28 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void first_child(t_pipex pipex, char **argv, char **evn)
 	pipex.cmd = get_cmd(pipex.cmd_path, pipex.cmd_args[0]);
 	if (!pipex.cmd)
 	{
-		child_free(&pipex);
+		childs_free(&pipex);
 		msg(ERR_PIPE);
 		exit(1);
 	}
@@ -55,7 +55,7 @@ void second_child(t_pipex pipex, char **argv, char **evn)
 	pipex.cmd = get_cmd(pipex.cmd_path, pipex.cmd_args[0]);
 	if (!pipex.cmd)
 	{
-		child_free(&pipex);
+		childs_free(&pipex);
 		msg(ERR_PIPE);
 		exit(1);
 	}
