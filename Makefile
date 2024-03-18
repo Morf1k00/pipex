@@ -6,14 +6,14 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 15:05:18 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/15 17:08:26 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/18 12:44:28 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= pipex
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
-RM		= rm
+RM		= rm -rf
 
 HEADER_SRCS	= pipex.h
 HEADER_DIR	= include/
@@ -30,10 +30,7 @@ FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
 OBJ_F		= $(FUNC:.c=.o)
 
 
-
-
-
-%.o: %.c $(OBJ_M) $(OBJ_F) $(HEADER)
+%.o: %.c $(HEADER) Makefile
 	@$(CC) $(FLAGS) -c $< -o $@
 								
 $(NAME): $(OBJ_F) $(OBJ_M)
@@ -47,7 +44,9 @@ clean:
 		@$(RM) $(OBJ_F)
 		@echo "$(YELLOW) objectfile deleted!$(DEFAULT)"
 
-fclean: clean
+fclean: 
+		@$(RM) $(OBJ_M)
+		@$(RM) $(OBJ_F)
 		@$(RM) $(NAME)
 		@echo "$(RED) all deleted!$(DEFAULT)"
 
