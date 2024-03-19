@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 12:42:35 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/19 12:43:32 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/19 15:33:19 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJ_F		= $(FUNC:.c=.o)
 								
 $(NAME): $(OBJ_F) $(OBJ_M)
 	@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
-	@echo "$(GREEN)$(NAME) Created!$(DEFAULT)"
+	@echo "$(GREEN)$(NAME) Created!$(DEFAULT)" 
 
 all:	$(NAME)
 
