@@ -6,89 +6,99 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:16:22 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 16:24:59 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:41:22 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static char	*ft_dele(const char *s, char c)
+static size_t	words_count(char *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	char	*temp;
 
 	i = 0;
 	j = 0;
-	temp = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!temp)
-		return (NULL);
-	while (s[i] == c && s[i])
-		i++;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] != c || (i > 0 && s[i - 1] != c))
-			temp[j++] = s[i];
-		i++;
+		if (*s != c)
+			i++;
+		else if (*s == c && i != 0)
+		{
+			j++;
+			i = 0;
+		}
+		s++;
 	}
-	temp[j] = '\0';
-	return (temp);
+	if (i != 0)
+		j++;
+	return (j);
 }
 
-static char	**ft_mal_and_wr(char **fin, char *temp, char c)
+static char	*word(char *s, char c)
+{
+	char	*buf;
+
+	while (*s == c)
+		s++;
+	buf = s;
+	while (*buf && *buf != c)
+		buf++;
+	*buf = '\0';
+	return (ft_strdup(s));
+}
+
+static char	**free_arr(char **arr, char *s)
 {
 	size_t	i;
-	size_t	j;
-	size_t	k;
-	size_t	g;
 
 	i = 0;
-	j = 0;
-	while (temp[i] != '\0')
+	while (arr[i])
 	{
-		k = 0;
-		g = i;
-		while (temp[i] != '\0' && temp[i] != c)
-			i++;
-		fin[j] = malloc(sizeof(char) * (i - g + 1));
-		if (!fin[j])
-			return (NULL);
-		while (temp[g] != '\0' && temp[g] != c)
-			fin[j][k++] = temp[g++];
-		fin[j][k] = '\0';
-		j++;
-		if (temp[i] == c && temp[i] != '\0')
-			i++;
+		free(arr[i]);
+		i++;
 	}
-	fin[j] = NULL;
-	return (fin);
+	free(arr);
+	free(s);
+	return (NULL);
+}
+
+static char	**worker(char **arr, char *s1, char c, size_t j)
+{
+	size_t	i;
+	char	*str;
+
+	str = s1;
+	i = 0;
+	while (i < j)
+	{
+		if (*s1 != c)
+		{
+			arr[i] = word(s1, c);
+			if (!arr[i])
+				return (free_arr(arr, s1));
+			s1 = s1 + ft_strlen(arr[i]);
+			i++;
+		}
+		s1++;
+	}
+	arr[i] = NULL;
+	free(str);
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*temp;
-	char	**fin;
+	char	**w_arr;
+	char	*s1;
+	size_t	j;
 
-	if (!s)
+	s1 = ft_strdup(s);
+	if (!s1)
 		return (NULL);
-	temp = ft_dele(s, c);
-	if (!temp)
-	{
-		free (temp);
+	j = words_count(s1, c);
+	w_arr = (char **)malloc(sizeof(char *) * (j + 1));
+	if (!w_arr)
 		return (NULL);
-	}
-	fin = malloc(sizeof(char *) * (ft_strlen(temp) + 1));
-	if (!fin)
-	{
-		free (temp);
-		return (NULL);
-	}
-	fin = ft_mal_and_wr(fin, temp, c);
-	if (!fin)
-	{
-		free (temp);
-		return (NULL);
-	}
-	free (temp);
-	return (fin);
+	return (worker(w_arr, s1, c, j));
 }

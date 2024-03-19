@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/15 15:05:18 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/18 12:44:28 by rkrechun         ###   ########.fr        #
+#    Created: 2024/03/19 12:42:35 by rkrechun          #+#    #+#              #
+#    Updated: 2024/03/19 12:43:32 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ MPATH_DIR	= mandatory/
 MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		= $(MPATH:.c=.o)
 
-FUNC_SRCS	= ft_split.c ft_strjoin.c ft_strlen.c ft_strncmp.c
+FUNC_SRCS	= ft_split.c ft_strjoin.c ft_strlen.c ft_strncmp.c ft_strdup.c
 FUNC_DIR	= functions/
 FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
 OBJ_F		= $(FUNC:.c=.o)

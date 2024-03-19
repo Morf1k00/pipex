@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:31:10 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/15 16:32:28 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:50:38 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char *get_cmd(char **path, char *cmd)
 	return(NULL);
 }
 
-void first_child(t_pipex pipex, char **argv, char **evn)
+void first_child(t_pipex pipex, char *argv[], char *evnp[])
 {
 	dup2(pipex.tube[1], 1);
 	close(pipex.tube[0]);
@@ -40,24 +40,24 @@ void first_child(t_pipex pipex, char **argv, char **evn)
 	if (!pipex.cmd)
 	{
 		childs_free(&pipex);
-		msg(ERR_PIPE);
+		msg(ERR_CMD);
 		exit(1);
 	}
-	execve(pipex.cmd, pipex.cmd_args, evn);
+	execve(pipex.cmd, pipex.cmd_args, evnp);
 }
 
-void second_child(t_pipex pipex, char **argv, char **evn)
+void second_child(t_pipex pipex, char *argv[], char *evnp[])
 {
 	dup2(pipex.tube[0], 0);
 	close(pipex.tube[1]);
-	dup2(pipex.infile, 1);
+	dup2(pipex.outfile, 1);
 	pipex.cmd_args = ft_split(argv[3], ' ');
 	pipex.cmd = get_cmd(pipex.cmd_path, pipex.cmd_args[0]);
 	if (!pipex.cmd)
 	{
 		childs_free(&pipex);
-		msg(ERR_PIPE);
+		msg(ERR_CMD);
 		exit(1);
 	}
-	execve(pipex.cmd, pipex.cmd_args, evn);
+	execve(pipex.cmd, pipex.cmd_args, evnp);
 }

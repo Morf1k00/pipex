@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 12:42:38 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/19 12:46:31 by rkrechun         ###   ########.fr       */
+/*   Created: 2024/03/19 12:39:13 by rkrechun          #+#    #+#             */
+/*   Updated: 2024/03/19 12:43:47 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strdup(const char *src)
 {
-	char	*new;
+	char	*cp;
 	size_t	i;
-	size_t	j;
-	size_t	len;
 
 	i = 0;
-	j = 0;
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	new = (char *)malloc(sizeof(char) * len);
-	if (new == NULL)
+	cp = (char *)malloc(ft_strlen(src) + 1);
+	if (!cp)
 		return (NULL);
-	while (s1[i] != '\0')
+	while (src[i])
 	{
-		new[i] = s1[i];
+		cp[i] = src[i];
 		i++;
 	}
-	while (s2[j] != '\0')
-	{
-		new[i] = s2[j];
-		i++;
-		j++;
-	}
-	new[i] = '\0';
-	return (new);
+	cp[i] = '\0';
+	return (cp);
 }
