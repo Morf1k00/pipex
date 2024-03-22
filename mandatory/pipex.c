@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:53:46 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/19 13:25:15 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:09:29 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv, char **envp)
 	pipex.infile = open(argv[1], O_RDONLY);
 	if (pipex.infile < 0)
 		msg_error(ERR_INFILE);
-	pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 777);
+	pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (pipex.outfile < 0)
 		msg_error(ERR_OUTFILE);
 	if (pipe(pipex.tube) < 0)
