@@ -6,32 +6,32 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:42 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 14:59:02 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:47:12 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-char *get_path(char **env)
+char	*get_path(char **env)
 {
-	while(ft_strncmp("PATH=", *env, 5))
+	while (ft_strncmp("PATH", *env, 4))
 		env++;
 	return (*env + 5);
 }
 
 void	get_infile(char **argv, t_pipexbonus *ppxb)
 {
-	if (ft_strncmp("here_doc", argv[1], 9) == 0)
+	if (!ft_strncmp("here_doc", argv[1], 9))
 		here_doc(argv[2], ppxb);
 	else
 	{
 		ppxb->infile = open(argv[1], O_RDONLY);
-		if(ppxb->infile < 0)
+		if (ppxb->infile < 0)
 			msg_error(ERR_INFILE);
 	}
 }
 
-void get_outfile(char *argv, t_pipexbonus *ppxb)
+void	get_outfile(char *argv, t_pipexbonus *ppxb)
 {
 	if (ppxb->here_doc)
 		ppxb->outfile = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0644);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 11:40:04 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 15:07:53 by rkrechun         ###   ########.fr       */
+/*   Created: 2023/05/29 12:40:07 by ipetruni          #+#    #+#             */
+/*   Updated: 2024/03/28 15:19:05 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 #  define BUFFER_SIZE 100
 # endif
 
-//get next line
-char		*get_next_line(int fd);
+/* get_next_line.c */
+int		some_error(char *str);
+int		get_next_line(int fd, char **line);
 
-//utilis to get next line
-size_t		ft_strlens(char *s);
-char		*ft_strchr(char *s, int c);
-char		*ft_strcpy(char *dest, char *src);
-char		*ft_strjoins(char *str, char *buffer);
+/* get_next_line_utils.c */
+size_t	ft_strlens(char const *s);
+int		find_new_line(char *str);
+char	*str_join(char *s1, char *s2);
+char	*trim_rem(char *str);
+char	*get_line(char *str);
 
-
-# endif
+#endif

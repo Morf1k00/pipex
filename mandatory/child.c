@@ -6,31 +6,31 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:31:10 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/19 12:50:38 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:55:54 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static char *get_cmd(char **path, char *cmd)
+static char	*get_cmd(char **path, char *cmd)
 {
-	char *tmp;
-	char *command;
+	char	*tmp;
+	char	*command;
 
-	while(*path)
+	while (*path)
 	{
 		tmp = ft_strjoin(*path, "/");
 		command = ft_strjoin(tmp, cmd);
 		free(tmp);
 		if (access(command, 0) == 0)
-			return(command);
+			return (command);
 		free(command);
 		path++;
 	}
-	return(NULL);
+	return (NULL);
 }
 
-void first_child(t_pipex pipex, char *argv[], char *evnp[])
+void	first_child(t_pipex pipex, char *argv[], char *evnp[])
 {
 	dup2(pipex.tube[1], 1);
 	close(pipex.tube[0]);
@@ -46,7 +46,7 @@ void first_child(t_pipex pipex, char *argv[], char *evnp[])
 	execve(pipex.cmd, pipex.cmd_args, evnp);
 }
 
-void second_child(t_pipex pipex, char *argv[], char *evnp[])
+void	second_child(t_pipex pipex, char *argv[], char *evnp[])
 {
 	dup2(pipex.tube[0], 0);
 	close(pipex.tube[1]);

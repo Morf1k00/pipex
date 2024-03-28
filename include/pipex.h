@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:05:27 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/19 12:50:11 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:54:17 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define ERR_INPUT "INVALID NUMBER OF ARGUMENTS.\n"
 # define ERR_CMD "COMAND NOT FOUND\n"
 
-
 typedef struct s_pipex
 {
 	pid_t	pid1;
@@ -42,22 +41,21 @@ typedef struct s_pipex
 	char	**cmd_args;
 }				t_pipex;
 
-
 // childs.c
-void 			first_child(t_pipex pipex, char *argv[], char *evnp[]);
-void 			second_child(t_pipex pipex, char *argv[], char *evnp[]);
+void			first_child(t_pipex pipex, char *argv[], char *evnp[]);
+void			second_child(t_pipex pipex, char *argv[], char *evnp[]);
 
 // error.c
 int				msg(char *err);
 int				msg_error(char *err);
 
 // free.c
-void 			parent_free(t_pipex *pipex);
-void 			childs_free(t_pipex *pipex);
+void			parent_free(t_pipex *pipex);
+void			childs_free(t_pipex *pipex);
 
 // pipex.c
-char 			*find_path(char **evn);
-void 			close_pipes(t_pipex *pipex);
+char			*find_path(char **evn);
+void			close_pipes(t_pipex *pipex);
 
 // function
 char			*ft_strjoin(char const *s1, char const *s2);

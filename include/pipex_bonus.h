@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 15:09:10 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:53:25 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define ERR_CMD "COMAND NOT FOUND\n"
 # define ERR_HEREDOC "here doc"
 # define ERR_ENV "Enviroment"
-
 
 typedef struct s_pipexbonus
 {
@@ -74,10 +73,10 @@ void		pipe_free(t_pipexbonus *ppxb);
 void		parent_free(t_pipexbonus *ppxb);
 
 // function
-char			*ft_strjoin(char const *s1, char const *s2);
-char			**ft_split(char const *s, char c);
-size_t			ft_strlen(const char *s);
-int				ft_strncmp(char *s1, char *s2, unsigned int n);
-char			*ft_strdup(const char *src);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		**ft_split(char const *s, char c);
+size_t		ft_strlen(const char *s);
+int			ft_strncmp(char *s1, char *s2, unsigned int n);
+char		*ft_strdup(const char *src);
 
 #endif
