@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 14:22:03 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:49:15 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,31 @@ typedef struct s_pipexbonus
 	char	**cmd_args;
 }				t_pipexbonus;
 
+//heredoc
 int 		arguments_check(char args, t_pipexbonus *ppxb);
+void		here_doc(char *delimiter, t_pipexbonus *ppxb);
+
+//pipes
+void		create_pipe(t_pipexbonus *ppxb);
+void		close_pipe(t_pipexbonus *ppxb);
+
+//childs
+void		child(t_pipexbonus ppxb, char *argv[], char *envp[]);
+
+//error
+void		msg(char *n);
+void		msg_error(char *n);
+void		msg_pipe(char *n);
+
+//files
+char		get_path(char **evnp);
+void		get_infile(char **argv, t_pipexbonus *ppxb);
+void		get_outfile(char *argv, t_pipexbonus *ppxb);
+
+//free
+void		child_free(t_pipexbonus *pipex);
+void		pipe_free(t_pipexbonus *ppxb);
+void		parent_free(t_pipexbonus *ppxb);
 
 // function
 char			*ft_strjoin(char const *s1, char const *s2);
