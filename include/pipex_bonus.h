@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/21 16:30:56 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:22:03 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include "../gnl/get_next_line.h"
 
 # define ERR_INFILE "INFILE"
 # define ERR_OUTFILE "OUTFILE"
@@ -27,6 +28,7 @@
 # define ERR_INPUT "INVALID NUMBER OF ARGUMENTS.\n"
 # define ERR_CMD "COMAND NOT FOUND\n"
 # define ERR_HEREDOC "here doc"
+# define ERR_ENV "Enviroment"
 
 
 typedef struct s_pipexbonus

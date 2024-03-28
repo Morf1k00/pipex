@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:10:02 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/21 17:16:40 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:31:00 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ void create_pipe(t_pipexbonus *ppxb)
 	{
 		if (pipe(ppxb->pipe + 2 * i) < 0)
 			parent_free(ppxb);
+		i++;
+	}
+}
+
+void close_pipe(t_pipexbonus *ppxb)
+{
+	int i;
+
+	i = 0;
+	while (i< ppxb->pipe_nbr)
+	{
+		close(ppxb->pipe[i]);
 		i++;
 	}
 }
@@ -43,4 +55,11 @@ int main(int argc, char *argv[], char *envp[])
 	if(!ppxb.cmd_path)
 		pipe_free(&ppxb);
 	create_pipe(&ppxb);
+	ppxb.index = -1;
+	while(++(ppxb.index) < ppxb.cmd_nbr)
+		child(ppxb, argv, envp);
+	close_pipe(&ppxb);
+	waitpid(-1, NULL, 0);
+	parent_free(&ppxb);
+	return(0);
 }
