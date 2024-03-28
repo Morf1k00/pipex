@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:05:55 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 16:49:48 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:12:16 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	here_doc(char *delimiter, t_pipexbonus *ppxb)
 		msg_error(ERR_HEREDOC);
 	while (1)
 	{
-		write (1, "heredoc>", 9);
+		write (1, "heredoc> ", 9);
 		if (get_next_line(0, &buf) < 0)
 			exit(1);
 		if (!ft_strncmp(delimiter, buf, ft_strlen(delimiter) + 1))

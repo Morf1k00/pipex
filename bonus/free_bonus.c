@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:10:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 16:48:12 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:03:02 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	child_free(t_pipexbonus *pipex)
 	int	i;
 
 	i = 0;
-	while (pipex->cmd_path[i])
+	while (pipex->cmd_args[i])
 	{
-		free(pipex->cmd_path[i]);
+		free(pipex->cmd_args[i]);
 		i++;
 	}
-	free(pipex->cmd_path);
+	free(pipex->cmd_args);
 	free(pipex->cmd);
 }
 

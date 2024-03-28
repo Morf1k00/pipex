@@ -6,13 +6,13 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:10:02 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 16:50:34 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:26:20 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-void	create_pipe(t_pipexbonus *ppxb)
+static void	create_pipe(t_pipexbonus *ppxb)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ void	close_pipe(t_pipexbonus *ppxb)
 	int	i;
 
 	i = 0;
-	while (i < ppxb->pipe_nbr)
+	while (i < (ppxb->pipe_nbr))
 	{
 		close(ppxb->pipe[i]);
 		i++;

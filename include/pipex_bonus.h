@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 16:53:25 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:37:25 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <stdbool.h>
 # include "../gnl/get_next_line.h"
 
 # define ERR_INFILE "INFILE"
@@ -51,7 +50,6 @@ int			arguments_check(char *args, t_pipexbonus *ppxb);
 void		here_doc(char *delimiter, t_pipexbonus *ppxb);
 
 //pipes
-void		create_pipe(t_pipexbonus *ppxb);
 void		close_pipe(t_pipexbonus *ppxb);
 
 //childs

@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 12:42:35 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/28 14:52:32 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/28 18:40:33 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,9 @@ CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 
-HEADER_SRCS	= pipex.h
+HEADER_SRCS	= pipex.h pipex_bonus.h
 HEADER_DIR	= include/
 HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
-
-HEADERB_SRCS= pipex_bonus.h
-HEADERB_DIR = include/
-HEADERB		= $(addprefix $(HEADERB_DIR), $(HEADERB_SRCS))
 
 MPATH_SRCS	= child.c error.c free.c pipex.c
 MPATH_DIR	= mandatory/
@@ -42,10 +38,7 @@ OBJ_B		= $(BPATH:.c=.o)
 
 
 %.o: %.c $(HEADER) Makefile
-	@$(CC) $(FLAGS) -c $< -o $@
-
-%.o: %.c $(HEADERB) Makefile
-	@$(CC) $(FLAGS) -c $< -o $@
+	@${CC} ${FLAGS} -c $< -o $@
 								
 $(NAME): $(OBJ_F) $(OBJ_M)
 	@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
@@ -53,15 +46,15 @@ $(NAME): $(OBJ_F) $(OBJ_M)
 
 all:	$(NAME)
 
-bonus:$(OBJ_B) $(OBJ_F)
-	@$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME)
-	@echo "$(GREEN)$(NAME) Created bonus!$(DEFAULT)"
+bonus:	$(OBJ_B) $(OBJ_F)
+		@$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME)
+		@echo "$(GREEN)$(NAME) Created bonus!$(DEFAULT)"
 
 clean:	
 		@$(RM) $(OBJ_M)
 		@$(RM) $(OBJ_F)
 		@$(RM) $(OBJ_B)
-		@echo "$(YELLOW) objectfile deleted!$(DEFAULT)"
+		@echo "$(YELLOW)objectfile deleted!$(DEFAULT)"
 
 fclean: 
 		@$(RM) $(OBJ_M)
@@ -69,7 +62,7 @@ fclean:
 		@$(RM) $(OBJ_B)
 		@$(RM) $(NAME)
 		@$(RM) $(BONUSNAME)
-		@echo "$(RED) all deleted!$(DEFAULT)"
+		@echo "$(RED)all deleted!$(DEFAULT)"
 
 re:	fclean all
 
