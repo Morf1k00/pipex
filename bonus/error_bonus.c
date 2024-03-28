@@ -6,15 +6,15 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:58 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/22 18:01:57 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:06:59 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-void msg(char *n)
+int msg(char *n)
 {
-	write(2, n, ft_strlen(n));
+	write(2, n, ft_strlens(n));
 	return(1);
 }
 

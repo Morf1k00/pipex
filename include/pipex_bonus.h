@@ -6,12 +6,12 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 14:49:15 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:09:10 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include <unistd.h>
 # include <sys/types.h>
@@ -48,7 +48,7 @@ typedef struct s_pipexbonus
 }				t_pipexbonus;
 
 //heredoc
-int 		arguments_check(char args, t_pipexbonus *ppxb);
+int			arguments_check(char *args, t_pipexbonus *ppxb);
 void		here_doc(char *delimiter, t_pipexbonus *ppxb);
 
 //pipes
@@ -59,12 +59,12 @@ void		close_pipe(t_pipexbonus *ppxb);
 void		child(t_pipexbonus ppxb, char *argv[], char *envp[]);
 
 //error
-void		msg(char *n);
+int			msg(char *n);
 void		msg_error(char *n);
 void		msg_pipe(char *n);
 
 //files
-char		get_path(char **evnp);
+char		*get_path(char **env);
 void		get_infile(char **argv, t_pipexbonus *ppxb);
 void		get_outfile(char *argv, t_pipexbonus *ppxb);
 

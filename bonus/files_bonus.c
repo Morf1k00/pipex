@@ -6,17 +6,17 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:42 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/21 16:50:31 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:59:02 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-char get_path(char **evnp)
+char *get_path(char **env)
 {
-	while(ft_strncmp("PATH=", *evnp, 5))
-		evnp++;
-	return (*evnp + 5);
+	while(ft_strncmp("PATH=", *env, 5))
+		env++;
+	return (*env + 5);
 }
 
 void	get_infile(char **argv, t_pipexbonus *ppxb)

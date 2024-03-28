@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:40:04 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 11:43:54 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:07:53 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 char		*get_next_line(int fd);
 
 //utilis to get next line
-size_t		ft_strlen(char *s);
+size_t		ft_strlens(char *s);
 char		*ft_strchr(char *s, int c);
 char		*ft_strcpy(char *dest, char *src);
-char		*ft_strjoin(char *str, char *buffer);
+char		*ft_strjoins(char *str, char *buffer);
 
 
 # endif

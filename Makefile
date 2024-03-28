@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 12:42:35 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/28 14:45:29 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/28 14:52:32 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,15 +49,13 @@ OBJ_B		= $(BPATH:.c=.o)
 								
 $(NAME): $(OBJ_F) $(OBJ_M)
 	@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
-	@echo "$(GREEN)$(NAME) Created!$(DEFAULT)" 
-
-$(BONUSNAME): $(OBJ_B) $(OBJ_F)
-	@$(CC) $(OBJ_F) $(OBJ_B) -o $(BONUSNAME)
-	@echo "$(GREEN)$(BONUSNAME) Created bonus!$(DEFAULT)"
+	@echo "$(GREEN)$(NAME) Created!$(DEFAULT)"
 
 all:	$(NAME)
 
-bonus: $(BONUSNAME)
+bonus:$(OBJ_B) $(OBJ_F)
+	@$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME)
+	@echo "$(GREEN)$(NAME) Created bonus!$(DEFAULT)"
 
 clean:	
 		@$(RM) $(OBJ_M)

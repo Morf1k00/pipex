@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:28 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 11:31:53 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:06:51 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void child(t_pipexbonus ppxb, char *argv[], char *envp[])
 			dups2(ppxb.pipe[2 * ppxb.index - 2], ppxb.outfile);
 		else
 			dups2(ppxb.pipe[2 * ppxb.index - 2], ppxb.pipe[2 * ppxb.index + 1]);
-		close_pipes(&ppxb);	
+		close_pipe(&ppxb);	
 		ppxb.cmd_args = ft_split(argv[2 + ppxb.here_doc + ppxb.index], ' ');
 		ppxb.cmd = get_command(ppxb.cmd_path, ppxb.cmd_args[0]);
 		if(!ppxb.cmd)

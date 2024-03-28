@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:14:37 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 11:40:52 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:08:10 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*ft_reads(int fd, char *str)
 		if (len == -1)
 			return (free(buff), free(str), NULL);
 		buff[len] = '\0';
-		str = ft_strjoin(str, buff);
+		str = ft_strjoins(str, buff);
 	}
 	return (free(buff), str);
 }
@@ -70,7 +70,7 @@ static char	*ft_next_line(char *str)
 		len++;
 	if (!str[len])
 		return (free(str), NULL);
-	buff = malloc(sizeof(char) * (ft_strlen(str) - len + 1));
+	buff = malloc(sizeof(char) * (ft_strlens(str) - len + 1));
 	if (!buff)
 		return (free(str), NULL);
 	len++;
