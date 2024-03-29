@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:10:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 18:03:02 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:41:19 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	parent_free(t_pipexbonus *ppxb)
 	close(ppxb->outfile);
 	if (ppxb->here_doc)
 		unlink(".heredoc_tmp");
-	while (ppxb->cmd_path[i])
+	while (ppxb->cmd_paths[i])
 	{
-		free(ppxb->cmd_path[i]);
+		free(ppxb->cmd_paths[i]);
 		i++;
 	}
-	free(ppxb->cmd_path);
+	free(ppxb->cmd_paths);
 	free(ppxb->pipe);
 }

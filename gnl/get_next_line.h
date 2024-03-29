@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:40:07 by ipetruni          #+#    #+#             */
-/*   Updated: 2024/03/28 15:19:05 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:16:12 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		some_error(char *str);
 int		get_next_line(int fd, char **line);
 
 /* get_next_line_utils.c */
-size_t	ft_strlens(char const *s);
+size_t	ft_strlen(char const *s);
 int		find_new_line(char *str);
 char	*str_join(char *s1, char *s2);
 char	*trim_rem(char *str);

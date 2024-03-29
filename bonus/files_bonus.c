@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:42 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 18:33:07 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:02:55 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	get_infile(char **argv, t_pipexbonus *ppxb)
 void	get_outfile(char *argv, t_pipexbonus *ppxb)
 {
 	if (ppxb->here_doc)
-		ppxb->outfile = open(argv, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		ppxb->outfile = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
 		ppxb->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (ppxb->outfile < 0)

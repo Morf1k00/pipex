@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:28 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 17:58:25 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:44:59 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*get_command(char **paths, char *cmd)
 		tmp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(tmp, cmd);
 		free(tmp);
-		if (access(command, 0) == 0)
+		if (access(command, F_OK) == 0)
 			return (command);
 		free(command);
 		paths++;
@@ -41,15 +41,15 @@ void	child(t_pipexbonus ppxb, char **argv, char **envp)
 	ppxb.pid = fork();
 	if (!ppxb.pid)
 	{
-		if (ppxb.pid == 0)
+		if (ppxb.index == 0)
 			sub_dup2(ppxb.infile, ppxb.pipe[1]);
-		else if (ppxb.index == ppxb.cmd_nbr - 1)
+		else if (ppxb.index == ppxb.cmd_nbrs - 1)
 			sub_dup2(ppxb.pipe[2 * ppxb.index - 2], ppxb.outfile);
 		else
 			sub_dup2(ppxb.pipe[2 * ppxb.index - 2], ppxb.pipe[2 * ppxb.index + 1]);
 		close_pipe(&ppxb);
 		ppxb.cmd_args = ft_split(argv[2 + ppxb.here_doc + ppxb.index], ' ');
-		ppxb.cmd = get_command(ppxb.cmd_path, ppxb.cmd_args[0]);
+		ppxb.cmd = get_command(ppxb.cmd_paths, ppxb.cmd_args[0]);
 		if (!ppxb.cmd)
 		{
 			msg_pipe(ppxb.cmd_args[0]);

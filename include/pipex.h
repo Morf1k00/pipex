@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:05:27 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 16:54:17 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:15:15 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <stdbool.h>
-// # include <libft/libft.h>
+# include <string.h>
+# include "../gnl/get_next_line.h"
 
 # define ERR_INFILE "INFILE"
 # define ERR_OUTFILE "OUTFILE"
@@ -60,7 +61,6 @@ void			close_pipes(t_pipex *pipex);
 // function
 char			*ft_strjoin(char const *s1, char const *s2);
 char			**ft_split(char const *s, char c);
-size_t			ft_strlen(const char *s);
 int				ft_strncmp(char *s1, char *s2, unsigned int n);
 char			*ft_strdup(const char *src);
 

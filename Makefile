@@ -6,16 +6,16 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 12:42:35 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/28 18:40:33 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/03/29 11:43:46 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= pipex
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror #-g -O2 -fsanitize=address -fno-omit-frame-pointer
 RM		= rm -rf
 
-HEADER_SRCS	= pipex.h pipex_bonus.h
+HEADER_SRCS	= pipex.h
 HEADER_DIR	= include/
 HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
@@ -24,21 +24,22 @@ MPATH_DIR	= mandatory/
 MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		= $(MPATH:.c=.o)
 
-FUNC_SRCS	= ft_split.c ft_strjoin.c ft_strlen.c ft_strncmp.c ft_strdup.c
-FUNC_DIR	= functions/
-FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
-OBJ_F		= $(FUNC:.c=.o)
-
 BPATH_SRCS 	= childs_bonus.c error_bonus.c files_bonus.c \
 				free_bonus.c here_doc.c pipex_bonus.c
 BPATH_DIR	= bonus/
-BPATH		= $(addprefix $(BPATH_DIR), $(BPATH_SRCS)) \
-				gnl/get_next_line.c gnl/get_next_line_utils.c 
+BPATH		= $(addprefix $(BPATH_DIR), $(BPATH_SRCS)) 
 OBJ_B		= $(BPATH:.c=.o)
+
+FUNC_SRCS	= ft_split.c ft_strjoin.c ft_strncmp.c ft_strdup.c
+FUNC_DIR	= functions/
+FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS)) \
+			gnl/get_next_line.c gnl/get_next_line_utils.c 
+OBJ_F		= $(FUNC:.c=.o)
+
 
 
 %.o: %.c $(HEADER) Makefile
-	@${CC} ${FLAGS} -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 								
 $(NAME): $(OBJ_F) $(OBJ_M)
 	@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
@@ -61,10 +62,9 @@ fclean:
 		@$(RM) $(OBJ_F)
 		@$(RM) $(OBJ_B)
 		@$(RM) $(NAME)
-		@$(RM) $(BONUSNAME)
 		@echo "$(RED)all deleted!$(DEFAULT)"
 
-re:	fclean all
+re:	fclean all 
 
 .PHONY:	all clean fclean re
 
