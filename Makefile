@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 12:42:35 by rkrechun          #+#    #+#              #
-#    Updated: 2024/03/29 11:43:46 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/02 12:25:24 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,30 +43,30 @@ OBJ_F		= $(FUNC:.c=.o)
 								
 $(NAME): $(OBJ_F) $(OBJ_M)
 	@$(CC) $(OBJ_F) $(OBJ_M) -o $(NAME)
-	@echo "$(GREEN)$(NAME) Created!$(DEFAULT)"
+	@echo "$(GREEN)Created $(NAME)!$(DEFAULT)"
 
 all:	$(NAME)
 
 bonus:	$(OBJ_B) $(OBJ_F)
 		@$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME)
-		@echo "$(GREEN)$(NAME) Created bonus!$(DEFAULT)"
+		@echo "$(GREEN)Created $(NAME) bonus!$(DEFAULT)"
 
 clean:	
 		@$(RM) $(OBJ_M)
 		@$(RM) $(OBJ_F)
 		@$(RM) $(OBJ_B)
-		@echo "$(YELLOW)objectfile deleted!$(DEFAULT)"
+		@echo "$(YELLOW)Objectfile deleted!$(DEFAULT)"
 
 fclean: 
 		@$(RM) $(OBJ_M)
 		@$(RM) $(OBJ_F)
 		@$(RM) $(OBJ_B)
 		@$(RM) $(NAME)
-		@echo "$(RED)all deleted!$(DEFAULT)"
+		@echo "$(RED)All deleted!$(DEFAULT)"
 
 re:	fclean all 
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean bonus re
 
 #COLORS
 RED = \033[1;31m

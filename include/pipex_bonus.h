@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/29 11:40:54 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:55:56 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		here_doc(char *delimiter, t_pipexbonus *ppxb);
 void		close_pipe(t_pipexbonus *ppxb);
 
 //childs
-void		child(t_pipexbonus ppxb, char *argv[], char *envp[]);
+void		child(t_pipexbonus p, char **argv, char **envp);
 
 //error
 int			msg(char *n);

@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:28 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/29 11:44:59 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:55:30 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,26 @@ static void	sub_dup2(int zero, int one)
 	dup2(one, 1);
 }
 
-void	child(t_pipexbonus ppxb, char **argv, char **envp)
+void	child(t_pipexbonus p, char **argv, char **envp)
 {
-	ppxb.pid = fork();
-	if (!ppxb.pid)
+	p.pid = fork();
+	if (!p.pid)
 	{
-		if (ppxb.index == 0)
-			sub_dup2(ppxb.infile, ppxb.pipe[1]);
-		else if (ppxb.index == ppxb.cmd_nbrs - 1)
-			sub_dup2(ppxb.pipe[2 * ppxb.index - 2], ppxb.outfile);
+		if (p.index == 0)
+			sub_dup2(p.infile, p.pipe[1]);
+		else if (p.index == p.cmd_nbrs - 1)
+			sub_dup2(p.pipe[2 * p.index - 2], p.outfile);
 		else
-			sub_dup2(ppxb.pipe[2 * ppxb.index - 2], ppxb.pipe[2 * ppxb.index + 1]);
-		close_pipe(&ppxb);
-		ppxb.cmd_args = ft_split(argv[2 + ppxb.here_doc + ppxb.index], ' ');
-		ppxb.cmd = get_command(ppxb.cmd_paths, ppxb.cmd_args[0]);
-		if (!ppxb.cmd)
+			sub_dup2(p.pipe[2 * p.index - 2], p.pipe[2 * p.index + 1]);
+		close_pipe(&p);
+		p.cmd_args = ft_split(argv[2 + p.here_doc + p.index], ' ');
+		p.cmd = get_command(p.cmd_paths, p.cmd_args[0]);
+		if (!p.cmd)
 		{
-			msg_pipe(ppxb.cmd_args[0]);
-			child_free(&ppxb);
+			msg_pipe(p.cmd_args[0]);
+			child_free(&p);
 			exit(1);
 		}
-		execve(ppxb.cmd, ppxb.cmd_args, envp);
+		execve(p.cmd, p.cmd_args, envp);
 	}
 }
