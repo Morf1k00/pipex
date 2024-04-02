@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:05:55 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/28 17:12:16 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:33:23 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	here_doc(char *delimiter, t_pipexbonus *ppxb)
 	int		file;
 	char	*buf;
 
-	file = open (".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	file = open (".heredoc_tmp", O_CREAT | O_WRONLY, 0644);
 	if (file < 0)
 		msg_error(ERR_HEREDOC);
 	while (1)

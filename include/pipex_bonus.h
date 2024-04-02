@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:09:53 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/29 11:55:56 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:39:49 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 # include "../gnl/get_next_line.h"
 
-# define ERR_INFILE "INFILE"
+# define ERR_INFILE "INFILE\n"
 # define ERR_OUTFILE "OUTFILE"
 # define ERR_PIPE "PIPE"
 # define ERR_INPUT "INVALID NUMBER OF ARGUMENTS.\n"
@@ -67,10 +67,11 @@ void		child(t_pipexbonus p, char **argv, char **envp);
 int			msg(char *n);
 void		msg_error(char *n);
 void		msg_pipe(char *n);
+int		msg_error_i(char *n, t_pipexbonus *p);
 
 //files
 char		*get_path(char **env);
-void		get_infile(char **argv, t_pipexbonus *ppxb);
+int		get_infile(char **argv, t_pipexbonus *ppxb);
 void		get_outfile(char *argv, t_pipexbonus *ppxb);
 
 //free

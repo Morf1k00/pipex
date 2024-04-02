@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:05:27 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/29 11:15:15 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:03:23 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <string.h>
 # include "../gnl/get_next_line.h"
 
-# define ERR_INFILE "INFILE"
+# define ERR_INFILE "No such file or directory"
 # define ERR_OUTFILE "OUTFILE"
 # define ERR_PIPE "PIPE"
 # define ERR_INPUT "INVALID NUMBER OF ARGUMENTS.\n"

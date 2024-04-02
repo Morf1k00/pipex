@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:10:02 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/03/29 11:41:45 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:38:57 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	main(int argc, char **argv, char **env)
 
 	if (argc < arguments_check(argv[1], &ppxb))
 		return (msg(ERR_INPUT));
-	get_infile(argv, &ppxb);
+	if (get_infile(argv, &ppxb) == 2)
+		return(0);
 	get_outfile(argv[argc - 1], &ppxb);
 	ppxb.cmd_nbrs = argc - 3 - ppxb.here_doc;
 	ppxb.pipe_nbrs = 2 * (ppxb.cmd_nbrs - 1);
